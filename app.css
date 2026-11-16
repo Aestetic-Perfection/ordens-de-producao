@@ -23,7 +23,7 @@ button:disabled { opacity: .5; cursor: wait; }
 }
 .admin { border-top: 6px solid #146351; }
 .admin-main { max-width: 1190px; margin: auto; padding: 44px 28px; }
-.admin-header { margin-bottom: 28px; }
+.admin-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
 .admin-header h1 { font-size: 38px; letter-spacing: -.055em; }
 .card {
   background: #fff;
@@ -94,7 +94,7 @@ table { width: 100%; border-collapse: collapse; text-align: left; }
   font-weight: 650;
 }
 .tv td { height: 8.2vh; font-size: 2.85vh; line-height: 1.13; border-bottom: 1px solid #35484b; overflow-wrap: break-word; }
-.tv th, .tv td { padding: .45vh 1.05vw; }
+.tv th, .tv td { padding: .45vh 1.05vw; text-align: center; vertical-align: middle; }
 .tv tbody tr:nth-child(odd) { background: #1b2b31; }
 .tv tbody tr:nth-child(even) { background: #21343a; }
 .tv td:first-child { font-weight: 650; }
@@ -150,3 +150,25 @@ input, select { border-color: #97877d; background: #fffdfa; }
 .tv td:nth-child(3), #connection { color: #ffd0b6; }
 .progress span { background: #5a4a41; }
 .progress i { background: var(--vettore-copper); }
+
+.admin-dark {
+  min-height: 100vh;
+  color-scheme: dark;
+  background: var(--vettore-graphite);
+  color: var(--vettore-white);
+}
+.admin-dark :focus-visible { outline-color: #f0ab87; }
+.admin-dark .card { background: #252221; border-color: #52433b; }
+.admin-dark input, .admin-dark select { background: #191716; border-color: #92796a; }
+.admin-dark th { background: #392d27; color: #ffd0b6; }
+.admin-dark th, .admin-dark td { border-bottom-color: #52433b; }
+.admin-dark button.secondary {
+  background: #302823;
+  color: #ffd0b6;
+  border-color: #92796a;
+}
+.admin-dark button.secondary:hover { background: #49352a; }
+.admin-dark #theme-toggle[aria-pressed="true"] { background: #513124; border-color: #e08d65; }
+.admin-dark .empty { color: #e0d6cf; }
+.admin-dark .message:not(.error) { background: #3d2d24; color: #ffd9c4; }
+.admin-dark .message.error { background: #4a2722; color: #ffd7ca; }

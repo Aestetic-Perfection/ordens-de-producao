@@ -11,9 +11,33 @@
   var empty = document.getElementById("empty");
   var message = document.getElementById("message");
   var refresh = document.getElementById("refresh");
+  var themeToggle = document.getElementById("theme-toggle");
+  var themeStorageKey = "ordens-de-producao-tema";
   var orders = [];
   var editing = null;
   var busy = false;
+
+  function setDarkTheme(enabled) {
+    document.body.classList.toggle("admin-dark", enabled);
+    themeToggle.setAttribute("aria-pressed", String(enabled));
+  }
+
+  if (themeToggle) {
+    try {
+      setDarkTheme(window.localStorage.getItem(themeStorageKey) === "escuro");
+    } catch (error) {
+      setDarkTheme(false);
+    }
+    themeToggle.onclick = function () {
+      var enabled = themeToggle.getAttribute("aria-pressed") !== "true";
+      setDarkTheme(enabled);
+      try {
+        window.localStorage.setItem(themeStorageKey, enabled ? "escuro" : "claro");
+      } catch (error) {
+        // O tema continua disponível com o armazenamento do navegador bloqueado.
+      }
+    };
+  }
 
   function notify(text, error) {
     message.hidden = !text;
