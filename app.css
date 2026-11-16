@@ -168,7 +168,52 @@ input, select { border-color: #97877d; background: #fffdfa; }
   border-color: #92796a;
 }
 .admin-dark button.secondary:hover { background: #49352a; }
-.admin-dark #theme-toggle[aria-pressed="true"] { background: #513124; border-color: #e08d65; }
 .admin-dark .empty { color: #e0d6cf; }
 .admin-dark .message:not(.error) { background: #3d2d24; color: #ffd9c4; }
 .admin-dark .message.error { background: #4a2722; color: #ffd7ca; }
+
+.admin .theme-toggle {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  flex: none;
+  width: 88px;
+  min-height: 44px;
+  padding: 2px;
+  border: 1px solid #b8a79b;
+  border-radius: 999px;
+  background: #f6e8df;
+  color: #753a20;
+}
+.admin .theme-toggle:hover { border-color: var(--vettore-copper-dark); }
+.theme-toggle::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--vettore-copper-dark);
+  transform: translate(0, -50%);
+  transition: transform 180ms ease;
+}
+.theme-toggle span {
+  position: relative;
+  font: 24px/1 "Segoe UI Symbol", "DejaVu Sans", sans-serif;
+}
+.theme-toggle[aria-checked="false"] .theme-toggle-sun { color: #fffdfa; }
+.admin .theme-toggle[aria-checked="true"] {
+  border-color: #92796a;
+  background: #302823;
+  color: #ffd0b6;
+}
+.theme-toggle[aria-checked="true"]::before {
+  background: #e08d65;
+  transform: translate(42px, -50%);
+}
+.theme-toggle[aria-checked="true"] .theme-toggle-moon { color: var(--vettore-graphite); }
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle::before { transition: none; }
+}

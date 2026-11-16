@@ -6,15 +6,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cadastro de ordens de produção</title>
-  <link rel="stylesheet" href="./app.css?v=24de864811b0">
+  <link rel="stylesheet" href="./app.css?v=683752fa291a">
   <script defer src="./shared.js?v=81782a9b7974"></script>
-  <script defer src="./cadastro.js?v=86b625acaa04"></script>
+  <script defer src="./cadastro.js?v=deacd6e952d3"></script>
 </head>
 <body class="admin">
   <main class="admin-main">
     <header class="admin-header">
       <h1>Ordens de produção</h1>
-      <button id="theme-toggle" class="secondary" type="button" aria-pressed="false">Tema escuro</button>
+      <button id="theme-toggle" class="theme-toggle" type="button" role="switch" aria-label="Tema escuro" aria-checked="false">
+        <span class="theme-toggle-sun" aria-hidden="true">☀︎</span>
+        <span class="theme-toggle-moon" aria-hidden="true">☾</span>
+      </button>
     </header>
     <p id="message" class="message" role="status" hidden></p>
     <section id="workspace" hidden>

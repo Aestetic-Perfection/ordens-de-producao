@@ -19,7 +19,7 @@
 
   function setDarkTheme(enabled) {
     document.body.classList.toggle("admin-dark", enabled);
-    themeToggle.setAttribute("aria-pressed", String(enabled));
+    themeToggle.setAttribute("aria-checked", String(enabled));
   }
 
   if (themeToggle) {
@@ -29,7 +29,7 @@
       setDarkTheme(false);
     }
     themeToggle.onclick = function () {
-      var enabled = themeToggle.getAttribute("aria-pressed") !== "true";
+      var enabled = themeToggle.getAttribute("aria-checked") !== "true";
       setDarkTheme(enabled);
       try {
         window.localStorage.setItem(themeStorageKey, enabled ? "escuro" : "claro");
