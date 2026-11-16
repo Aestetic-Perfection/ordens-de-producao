@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta name="orders-api" content="https://ordens-de-producao.grittyfreesia2.chatgpt.site">
+  <meta name="referrer" content="no-referrer">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro de ordens de produção</title>
+  <link rel="stylesheet" href="./app.css">
+  <script defer src="./shared.js"></script>
+  <script defer src="./cadastro.js"></script>
+</head>
+<body class="admin">
+  <main class="admin-main">
+    <header class="admin-header"><h1>Ordens de produção</h1></header>
+    <p id="message" class="message" role="status" hidden></p>
+    <section id="workspace" hidden>
+      <form id="order-form" class="card">
+        <h2 id="form-title">Nova ordem</h2>
+        <div class="fields">
+          <label>Máquina<input name="machine" list="machines" maxlength="80" placeholder="Selecione ou digite" required>
+            <datalist id="machines"><option value="Bancada manivela"><option value="Bancada automática"></datalist>
+          </label>
+          <label>Data de entrega<input name="dueDate" type="date" required></label>
+          <label>NCP<input name="ncp" maxlength="40" required></label>
+          <label>Cliente<input name="customer" maxlength="120" required></label>
+        </div>
+        <div class="actions">
+          <button id="save" type="submit">Criar ordem</button>
+          <button id="cancel" class="secondary" type="button" hidden>Cancelar</button>
+        </div>
+      </form>
+      <section class="card queue">
+        <header class="queue-header">
+          <h2>Fila de produção</h2>
+          <div class="filters">
+            <label class="sr-only" for="status-filter">Status da ordem</label>
+            <select id="status-filter"><option value="active">Em aberto</option><option value="completed">Concluídas</option></select>
+            <button id="refresh" class="secondary" type="button">Atualizar</button>
+          </div>
+        </header>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Máquina</th><th>Entrega</th><th>NCP</th><th>Cliente</th><th>Ações</th></tr></thead>
+            <tbody id="orders"></tbody>
+          </table>
+        </div>
+        <p id="empty" class="empty" hidden></p>
+      </section>
+    </section>
+  </main>
+</body>
+</html>

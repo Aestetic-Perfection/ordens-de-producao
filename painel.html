@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta name="orders-api" content="https://ordens-de-producao.grittyfreesia2.chatgpt.site">
+  <meta name="referrer" content="no-referrer">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel de ordens de produção</title>
+  <link rel="stylesheet" href="./app.css">
+  <script defer src="./shared.js"></script>
+  <script defer src="./painel.js"></script>
+</head>
+<body class="tv">
+  <main class="tv-main">
+    <header class="tv-header">
+      <h1>Ordens de produção</h1>
+      <p id="count"></p>
+    </header>
+    <table id="tv-table" hidden>
+      <colgroup><col class="machine"><col class="date"><col class="ncp"><col class="customer"></colgroup>
+      <thead><tr><th>Máquina</th><th>Entrega</th><th>NCP</th><th>Cliente</th></tr></thead>
+      <tbody id="tv-orders"></tbody>
+    </table>
+    <p id="tv-empty" class="tv-empty">Carregando ordens…</p>
+    <footer class="tv-footer">
+      <div class="tv-footer-info"><span id="connection" role="status"></span><span id="page"></span></div>
+      <div id="progress" class="progress" aria-hidden="true"></div>
+    </footer>
+  </main>
+</body>
+</html>
