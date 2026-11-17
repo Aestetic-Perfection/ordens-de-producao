@@ -6,9 +6,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cadastro de ordens de produção</title>
-  <link rel="stylesheet" href="./app.css?v=683752fa291a">
-  <script defer src="./shared.js?v=81782a9b7974"></script>
-  <script defer src="./cadastro.js?v=deacd6e952d3"></script>
+  <link rel="stylesheet" href="./app.css?v=1f070080e78d">
+  <script defer src="./shared.js?v=88108f53782a"></script>
+  <script defer src="./cadastro.js?v=11e44cbb5ada"></script>
 </head>
 <body class="admin">
   <main class="admin-main">
@@ -30,6 +30,9 @@
           <label>Data de entrega<input name="dueDate" type="date" required></label>
           <label>NCP<input name="ncp" maxlength="40" required></label>
           <label>Cliente<input name="customer" maxlength="120" required></label>
+          <label>Data de fechamento<input name="closingDate" type="date"></label>
+          <label>Tamanho<input name="size" maxlength="80" placeholder="Ex. 3.000 × 1.500 mm"></label>
+          <label class="notes-field">Observações<textarea name="notes" maxlength="500" rows="3"></textarea></label>
         </div>
         <div class="actions">
           <button id="save" type="submit">Criar ordem</button>
@@ -47,7 +50,7 @@
         </header>
         <div class="table-scroll">
           <table>
-            <thead><tr><th>Máquina</th><th>Entrega</th><th>NCP</th><th>Cliente</th><th>Ações</th></tr></thead>
+            <thead><tr><th>Máquina</th><th>Entrega</th><th>NCP</th><th>Cliente</th><th>Fechamento</th><th>Tamanho</th><th>Observações</th><th>Ações</th></tr></thead>
             <tbody id="orders"></tbody>
           </table>
         </div>

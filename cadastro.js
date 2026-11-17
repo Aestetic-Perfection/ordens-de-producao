@@ -56,8 +56,8 @@
   function edit(order) {
     if (busy) return;
     editing = order;
-    ["machine", "dueDate", "ncp", "customer"].forEach(function (name) {
-      fields[name].value = order[name];
+    ["machine", "dueDate", "ncp", "customer", "closingDate", "size", "notes"].forEach(function (name) {
+      fields[name].value = order[name] || "";
     });
     title.textContent = "Editar ordem";
     save.textContent = "Salvar alterações";
@@ -134,7 +134,7 @@
   form.onsubmit = function (event) {
     event.preventDefault();
     var data = {};
-    ["machine", "dueDate", "ncp", "customer"].forEach(function (name) { data[name] = fields[name].value; });
+    ["machine", "dueDate", "ncp", "customer", "closingDate", "size", "notes"].forEach(function (name) { data[name] = fields[name].value; });
     if (editing) data.revision = editing.revision;
     changeOrder(editing ? "/api/ordens/" + editing.id : "/api/ordens",
       editing ? "PATCH" : "POST", data, editing ? "Ordem atualizada." : "Ordem criada.", true);

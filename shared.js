@@ -23,7 +23,8 @@
 
   window.orderCells = function (row, order) {
     var date = order.dueDate.split("-").reverse().join("/");
-    [order.machine, date, order.ncp, order.customer].forEach(function (value) {
+    var closingDate = order.closingDate ? order.closingDate.split("-").reverse().join("/") : "—";
+    [order.machine, date, order.ncp, order.customer, closingDate, order.size || "—", order.notes || "—"].forEach(function (value) {
       var cell = row.insertCell();
       cell.textContent = value;
     });
