@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta name="app-version" content="b091e34368398f77">
+  <meta name="app-version" content="8dc0b6477963dff6">
   <meta name="orders-api" content="https://ordens-de-producao.grittyfreesia2.chatgpt.site">
   <meta name="referrer" content="no-referrer">
   <meta charset="utf-8">
@@ -29,10 +29,10 @@
             <datalist id="machines"><option value="Bancada manivela"><option value="Bancada automática"></datalist>
           </label>
           <label>Tamanho<input name="size" maxlength="80" placeholder="Ex. 3.000 × 1.500 mm"></label>
-          <label>Data de entrega<input name="dueDate" type="date" required></label>
+          <label>Data Entrega<input name="dueDate" type="date" required></label>
           <label>Cliente<input name="customer" maxlength="120" required></label>
           <label>NCP<input name="ncp" maxlength="40" required></label>
-          <label>Data de fechamento<input name="closingDate" type="date"></label>
+          <label>Data Fechamento<input name="closingDate" type="date"></label>
           <label class="notes-field">Observações<textarea name="notes" maxlength="500" rows="3"></textarea></label>
         </div>
         <div class="actions">
@@ -51,7 +51,7 @@
         </header>
         <div class="table-scroll">
           <table>
-            <thead><tr><th>Máquina</th><th>Tamanho</th><th>Data de entrega</th><th>Cliente</th><th>NCP</th><th>Data de fechamento</th><th>Observações</th><th>Ações</th></tr></thead>
+            <thead><tr><th>Máquina</th><th>Tamanho</th><th>Data Entrega</th><th>Cliente</th><th>NCP</th><th>Data Fechamento</th><th>Observações</th><th>Ações</th></tr></thead>
             <tbody id="orders"></tbody>
           </table>
         </div>
