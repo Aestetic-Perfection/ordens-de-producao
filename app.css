@@ -72,7 +72,7 @@ table { width: 100%; border-collapse: collapse; text-align: left; }
 .admin th, .admin td { padding: 12px; border-bottom: 1px solid #e0e8e4; }
 .admin th { color: #52665e; background: #f2f6f4; font-size: 13px; }
 .admin td { overflow-wrap: anywhere; }
-.admin td:nth-child(2) { white-space: nowrap; }
+.admin td:nth-child(3), .admin td:nth-child(6) { white-space: nowrap; }
 .compact { min-height: 34px; padding: 5px 10px; font-size: 13px; }
 .row-actions { min-width: 158px; }
 .row-actions button + button { margin-left: 5px; }
@@ -104,8 +104,8 @@ table { width: 100%; border-collapse: collapse; text-align: left; }
 .tv tbody tr:nth-child(odd) { background: #1b2b31; }
 .tv tbody tr:nth-child(even) { background: #21343a; }
 .tv td:first-child { font-weight: 650; }
-.tv td:nth-child(2), .tv td:nth-child(3) { font-variant-numeric: tabular-nums; }
-.tv td:nth-child(3) { color: #c4dfd5; }
+.tv td:nth-child(3), .tv td:nth-child(5), .tv td:nth-child(6) { font-variant-numeric: tabular-nums; }
+.tv td:nth-child(5) { color: #c4dfd5; }
 .tv-footer { position: absolute; bottom: 3vh; left: 3.4vw; right: 3.4vw; }
 .tv-footer-info { display: flex; justify-content: space-between; color: #bed0c9; font-size: 2.2vh; margin-bottom: 1vh; }
 #connection { color: #f0c088; }
@@ -153,7 +153,7 @@ input, select, textarea { border-color: #97877d; background: #fffdfa; }
 .tv td { border-bottom-color: #49423e; }
 .tv tbody tr:nth-child(odd) { background: #242221; }
 .tv tbody tr:nth-child(even) { background: #302c2a; }
-.tv td:nth-child(3), #connection { color: #ffd0b6; }
+.tv td:nth-child(5), #connection { color: #ffd0b6; }
 .progress span { background: #5a4a41; }
 .progress i { background: var(--vettore-copper); }
 
@@ -177,6 +177,7 @@ input, select, textarea { border-color: #97877d; background: #fffdfa; }
 .admin-dark .empty { color: #e0d6cf; }
 .admin-dark .message:not(.error) { background: #3d2d24; color: #ffd9c4; }
 .admin-dark .message.error { background: #4a2722; color: #ffd7ca; }
+.admin td.has-notes, .tv td.has-notes { background: #b91c1c; color: #fff; }
 
 .admin .theme-toggle {
   position: relative;

@@ -6,8 +6,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cadastro de ordens de produção</title>
-  <link rel="stylesheet" href="./app.css?v=1f070080e78d">
-  <script defer src="./shared.js?v=88108f53782a"></script>
+  <link rel="stylesheet" href="./app.css?v=8eac271ff0a4">
+  <script defer src="./shared.js?v=6018ec3d9296"></script>
   <script defer src="./cadastro.js?v=11e44cbb5ada"></script>
 </head>
 <body class="admin">
@@ -27,11 +27,11 @@
           <label>Máquina<input name="machine" list="machines" maxlength="80" placeholder="Selecione ou digite" required>
             <datalist id="machines"><option value="Bancada manivela"><option value="Bancada automática"></datalist>
           </label>
-          <label>Data de entrega<input name="dueDate" type="date" required></label>
-          <label>NCP<input name="ncp" maxlength="40" required></label>
-          <label>Cliente<input name="customer" maxlength="120" required></label>
-          <label>Data de fechamento<input name="closingDate" type="date"></label>
           <label>Tamanho<input name="size" maxlength="80" placeholder="Ex. 3.000 × 1.500 mm"></label>
+          <label>Data de entrega<input name="dueDate" type="date" required></label>
+          <label>Cliente<input name="customer" maxlength="120" required></label>
+          <label>NCP<input name="ncp" maxlength="40" required></label>
+          <label>Data de fechamento<input name="closingDate" type="date"></label>
           <label class="notes-field">Observações<textarea name="notes" maxlength="500" rows="3"></textarea></label>
         </div>
         <div class="actions">
@@ -50,7 +50,7 @@
         </header>
         <div class="table-scroll">
           <table>
-            <thead><tr><th>Máquina</th><th>Entrega</th><th>NCP</th><th>Cliente</th><th>Fechamento</th><th>Tamanho</th><th>Observações</th><th>Ações</th></tr></thead>
+            <thead><tr><th>Máquina</th><th>Tamanho</th><th>Data de entrega</th><th>Cliente</th><th>NCP</th><th>Data de fechamento</th><th>Observações</th><th>Ações</th></tr></thead>
             <tbody id="orders"></tbody>
           </table>
         </div>

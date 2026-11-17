@@ -24,10 +24,12 @@
   window.orderCells = function (row, order) {
     var date = order.dueDate.split("-").reverse().join("/");
     var closingDate = order.closingDate ? order.closingDate.split("-").reverse().join("/") : "—";
-    [order.machine, date, order.ncp, order.customer, closingDate, order.size || "—", order.notes || "—"].forEach(function (value) {
+    var notes = (order.notes || "").trim();
+    [order.machine, order.size || "—", date, order.customer, order.ncp, closingDate, notes || "—"].forEach(function (value) {
       var cell = row.insertCell();
       cell.textContent = value;
     });
+    row.cells[6].classList.toggle("has-notes", notes.length > 0);
     return row;
   };
 }());
