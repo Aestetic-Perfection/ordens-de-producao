@@ -9,12 +9,34 @@
   var connection = document.getElementById("connection");
   var progress = document.getElementById("progress");
   var orders = [];
-  var pending = null;
   var loaded = false;
   var page = 0;
   var started = Date.now();
   var rowLimit = 8;
   var activeBar;
+  var versionMeta = document.querySelector('meta[name="app-version"]');
+
+  function checkPublication() {
+    if (!versionMeta) return;
+    var request = new XMLHttpRequest();
+    request.open("GET", window.location.pathname + "?publication=" + Date.now());
+    request.timeout = 4000;
+    request.onload = function () {
+      if (request.status === 200) {
+        var match = /<meta name="app-version" content="([a-f0-9]+)">/.exec(request.responseText);
+        if (match && match[1] !== versionMeta.content) {
+          // Mantém a chave do painel e evita reutilizar o HTML em cache.
+          window.location.replace(window.location.pathname + "?publication=" + Date.now() + window.location.hash);
+          return;
+        }
+      }
+      window.setTimeout(checkPublication, 5000);
+    };
+    request.onerror = request.ontimeout = function () {
+      window.setTimeout(checkPublication, 5000);
+    };
+    request.send();
+  }
 
   function pages() { return Math.max(1, Math.ceil(orders.length / rowLimit)); }
 
@@ -53,10 +75,6 @@
     var elapsed = now - started;
     if (pages() > 1 && elapsed >= pageTime) {
       page = (page + 1) % pages();
-      if (page === 0 && pending) {
-        orders = pending;
-        pending = null;
-      }
       started = now;
       elapsed = 0;
       render();
@@ -68,7 +86,6 @@
     window.ordersApi("GET", "/api/painel", null, function (status, result) {
       if (status === 403) {
         orders = [];
-        pending = null;
         loaded = false;
         page = 0;
         render();
@@ -77,22 +94,18 @@
         return;
       }
       if (status === 200 && Array.isArray(result.orders)) {
-        if (!loaded || pages() === 1) {
-          var rotating = pages() > 1;
-          orders = result.orders;
-          pending = null;
-          loaded = true;
-          if (!rotating && pages() > 1) started = Date.now();
-          render();
-        } else {
-          pending = result.orders;
-        }
+        var rotating = pages() > 1;
+        orders = result.orders;
+        page = Math.min(page, pages() - 1);
+        loaded = true;
+        if (!rotating && pages() > 1) started = Date.now();
+        render();
         connection.textContent = "";
       } else {
         if (!loaded) empty.textContent = "Aguardando conexão…";
         connection.textContent = loaded ? "Sem atualização · exibindo a última lista" : "Tentando reconectar";
       }
-      window.setTimeout(sync, 30000);
+      window.setTimeout(sync, 5000);
     });
   }
 
@@ -103,5 +116,6 @@
   resize();
   window.addEventListener("resize", resize);
   window.setInterval(tick, 100);
+  checkPublication();
   sync();
 }());
