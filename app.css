@@ -76,6 +76,7 @@ table { width: 100%; border-collapse: collapse; text-align: left; }
 .compact { min-height: 34px; padding: 5px 10px; font-size: 13px; }
 .row-actions { min-width: 158px; }
 .row-actions button + button { margin-left: 5px; }
+.completion-date { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .empty { padding: 20px 12px 4px; color: #52665e; }
 .message { padding: 11px 15px; margin: 0 0 15px; border-radius: 7px; background: #dceee4; color: #124b3a; }
 .message.error { background: #f9e8e1; color: #842b13; }

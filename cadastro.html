@@ -1,15 +1,15 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta name="app-version" content="8dc0b6477963dff6">
+  <meta name="app-version" content="0e5d5a1043e4017b">
   <meta name="orders-api" content="https://ordens-de-producao.grittyfreesia2.chatgpt.site">
   <meta name="referrer" content="no-referrer">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cadastro de ordens de produção</title>
-  <link rel="stylesheet" href="./app.css?v=e3832d425c77">
+  <link rel="stylesheet" href="./app.css?v=e58607eb8652">
   <script defer src="./shared.js?v=6018ec3d9296"></script>
-  <script defer src="./cadastro.js?v=11e44cbb5ada"></script>
+  <script defer src="./cadastro.js?v=8b294c5818ef"></script>
 </head>
 <body class="admin">
   <main class="admin-main">
@@ -51,7 +51,7 @@
         </header>
         <div class="table-scroll">
           <table>
-            <thead><tr><th>Máquina</th><th>Tamanho</th><th>Data Entrega</th><th>Cliente</th><th>NCP</th><th>Data Fechamento</th><th>Observações</th><th>Ações</th></tr></thead>
+            <thead><tr><th>Máquina</th><th>Tamanho</th><th>Data Entrega</th><th>Cliente</th><th>NCP</th><th>Data Fechamento</th><th>Observações</th><th id="completed-at-heading" hidden>Finalizada Em</th><th>Ações</th></tr></thead>
             <tbody id="orders"></tbody>
           </table>
         </div>

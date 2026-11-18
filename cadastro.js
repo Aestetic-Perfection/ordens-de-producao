@@ -13,6 +13,16 @@
   var refresh = document.getElementById("refresh");
   var themeToggle = document.getElementById("theme-toggle");
   var themeStorageKey = "ordens-de-producao-tema";
+  var completedHeading = document.getElementById("completed-at-heading");
+  var completionDateFormat = new Intl.DateTimeFormat("pt-BR", {
+    timeZone: "America/Sao_Paulo",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  });
   var orders = [];
   var editing = null;
   var busy = false;
@@ -98,9 +108,17 @@
   function render() {
     table.textContent = "";
     var completed = filter.value === "completed";
+    completedHeading.hidden = !completed;
     var visible = orders.filter(function (order) { return !!order.completed === completed; });
     visible.forEach(function (order) {
       var row = window.orderCells(table.insertRow(), order);
+      if (completed) {
+        var completionCell = row.insertCell();
+        completionCell.className = "completion-date";
+        completionCell.textContent = order.completedAt
+          ? completionDateFormat.format(new Date(order.completedAt))
+          : "Não registrada";
+      }
       var actions = row.insertCell();
       actions.className = "row-actions";
       actions.appendChild(button("Editar", function () { edit(order); }));
